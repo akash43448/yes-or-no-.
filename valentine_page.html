@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h2 {
+            font-size: 24px;
+            color: red;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #yes {
+            background-color: green;
+            color: white;
+        }
+        #no {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="question">Will you be my Valentine?</h2>
+    <div class="buttons">
+        <button id="yes" onclick="alert('Yay! I love you ❤️')">Yes</button>
+        <button id="no" onclick="handleNo()">No</button>
+    </div>
+</div>
+
+<script>
+    let count = 0;
+    const questions = [
+        "Are you sure? 😢",
+        "Think again! 🥺",
+        "You will regret this 😭",
+        "Last chance! 💔",
+        "okay one more time 😭",
+        "fir se soch Lo 🙈",
+        "ak bar fir se soch lo 🌚",
+        "ye last time hai 😭",
+        "theek hai no hi kar do 😒"
+    ];
+
+    function handleNo() {
+        if (count < questions.length) {
+            document.getElementById("question").innerText = questions[count];
+            count++;
+        } else {
+            moveNoButton();
+        }
+    }
+
+    function moveNoButton() {
+        let noButton = document.getElementById("no");
+        noButton.style.position = "absolute";
+        noButton.style.left = Math.random() * 80 + "%";
+        noButton.style.top = Math.random() * 80 + "%";
+    }
+
+    document.getElementById("no").onmouseover = function() {
+        if (count >= questions.length) moveNoButton();
+    };
+</script>
+
+</body>
+</html>
